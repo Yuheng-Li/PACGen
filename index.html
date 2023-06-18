@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Generate Anything Anywhere in Any Scene.">
+  <meta name="keywords" content="Image Generation, Diffusion, Grounding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generate Anything Anywhere in Any Scene.</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="icon" href="./static/images/icon.png">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  </head>
+  <body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title">Generate Anything Anywhere in Any Scene</h2>
+          <div class="is-size-5">
+            <span class="author-block">
+                <a href="https://yuheng-li.github.io/" style="color:#f68946;font-weight:normal;">Yuheng Li</a>,                
+            </span>
+            <span class="author-block">
+              <a href="https://hliu.cc/" style="color:#f68946;font-weight:normal;">Haotian Liu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://chunyuan.li/" style="color:#008AD7;font-weight:normal;">Yangming Wen</a>,
+            </span>   
+            <span class="author-block">
+              <a href="https://pages.cs.wisc.edu/~yongjaelee/" style="color:#f68946;font-weight:normal;">Yong Jae Lee</a>,
+            </span>                                  
+          </div>
+
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><b style="color:#f68946; font-weight:normal">&#x25B6 </b> University of Wisconsin-Madison</b></span>
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" target="_blank" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" width="150%" src="images/teaser.jpg">
+      <!-- <h2 class="subtitle has-text-centered">
+        <p style="font-family:Times New Roman"><b>Figure 1. GLIGEN enables versatile grounding capabilities for a frozen text-to-image generation model.</b></p>
+      </h2> -->
+    </div>
+  </div>
+</section>
+
+
+<section class="section"   style="background-color:#efeff081">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Text-to-image diffusion models have attracted considerable interest due to their wide applicability across diverse fields. 
+            However, challenges persist in creating <b>controllable</b> models for <b>personalized</b> object generation. 
+            In this paper, we first identify the entanglement issues in existing personalized generative models, 
+            and then propose a straightforward and efficient data augmentation training strategy that guides the diffusion model to focus solely on object identity. 
+            By inserting the plug-and-play adapter layers from a pre-trained controllable diffusion model, our model obtains the ability to control the location and size of each generated personalized object.  
+            During inference, we propose a regionally-guided sampling technique to maintain the quality and fidelity of the generated images. 
+            Our method achieves comparable or superior fidelity for personalized objects, yielding a robust, versatile, and controllable text-to-image diffusion model that is capable of generating realistic and personalized images. 
+            Our approach demonstrates significant potential for various applications, such as those in art, entertainment, and advertising design.
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-fifths">
+        <h2 class="title is-3"><img id="painting_icon" width="5%" src="https://cdn-icons-png.flaticon.com/512/5379/5379860.png"> PACGen: Personalized and Controllable <br> Text-to-Image Generation </h2> 
+      </div>
+    </div>
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-six-fifths">
+            <div class="content has-text-justified">
+              <ul>
+                <li>Personalized diffusion models (e.g., Dreambooth) show entanglement between object identity and spatial information.</li>
+                <li>PACGen introduce a simple data augmentation to address the disentanglement during training. </li>
+                <li>Plug-and-play <a href='https://gligen.github.io/'>GLIGEN's adapter layer</a> to control your object durining inference time.</li>
+              </ul>
+            </div>        
+            <img id="model" width="90%" src="images/approach.jpg">
+        </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-six-fifths">
+      <h2 class="title is-3"><img id="painting_icon" width="3%" src="https://cdn-icons-png.flaticon.com/512/3515/3515174.png"> Results & Applications</h2>
+    </div>
+  </div> 
+<div class="container is-max-desktop">
+
+
+  <!-- Grounedtext2img. -->
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4"><font color="#000000">Location Control</font></h2>
+      <img id="teaser" width="95%" src="images/application0.png">
+      <h1>
+        <p style="font-family:Times New Roman"><b>PACGen offers the flexibility to effortlessly place your unique object at any desired location. The four distinct color-coded boxes on the left correspond to four resulting images on the right.</b>
+      </h1>                 
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4"><font color="#000000">Image Composition</font></h2>
+      <img id="teaser" width="95%" src="images/application1.png">
+      <h1>
+        <p style="font-family:Times New Roman"><b>PACGen is designed to accommodate multiple objects location control, including both user-provided unique objects and common objects. This capability demonstrates its remarkable potential for addressing image composition challenges..</b>
+      </h1>                 
+    </div>
+  </div>
+
+
+  <br>
+  <br>
+
+
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4"><font color="#000000">Art Style</font></h2>
+      <img id="teaser" width="95%" src="images/application2.png">
+      <h1>
+        <p style="font-family:Times New Roman"><b>With PACGen, you can effortlessly incorporate your favorite objects and pets into any location and adapt a variety of art styles to create personalized, aesthetically appealing images..</b>
+      </h1>                 
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4"><font color="#000000">Accessorization</font></h2>
+      <img id="teaser" width="95%" src="images/application3.png">
+      <h1>
+        <p style="font-family:Times New Roman"><b>PACGen not only grants you full control over your object's location but also offers the ability to add various accessories or outfits, enabling endless customization possibilities..</b>
+      </h1>                 
+    </div>
+  </div>
+
+
+  <br>
+  <br>
+
+
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4"><font color="#000000">Attribute</font></h2>
+      <img id="teaser" width="95%" src="images/application4.png">
+      <h1>
+        <p style="font-family:Times New Roman"><b>Additionally, PACGen allows you to modify object attributes, such as color, while still maintaining the control over object location, enhancing the overall customization experience. </b>
+      </h1>                 
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4"><font color="#000000">Hybrid</font></h2>
+      <img id="teaser" width="95%" src="images/application5.png">
+      <h1>
+        <p style="font-family:Times New Roman"><b>We also showcase how PACGen enables you to create a hybrid between your object and other common objects, sparking your imagination and inspiring unique designs..</b>
+      </h1>                 
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+
+
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4">Terms and Conditions</h2>
+      <h1>
+        <p style="font-family:Times New Roman">We have strict terms and conditions for using the model checkpoints and the demo; it is restricted to uses that follow the license agreement of <a href="https://github.com/CompVis/latent-diffusion">Latent Diffusion Model</a> and <a href="https://github.com/Stability-AI/StableDiffusion">Stable Diffusion</a>.
+        </b>
+      </h1>                 
+    </div>     
+  </div>
+
+
+<!-- 
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-4">Broader Impact</h2>
+      <h1>
+        <p style="font-family:Times New Roman">It is important to note that our model GLIGEN is designed for open-world grounded text-to-image generation with caption and various condition inputs (e.g. bounding box). However, we also recognize the importance of responsible AI considerations and the need to clearly communicate the capabilities and limitations of our research. While the grounding ability generalizes well to novel spatial configuration and concepts, our model may not perform well in scenarios that are out of scope or beyond the intended use case. We strongly discourage the misuse of our model in scenarios, where our technology could be used to generate misleading or malicious images. We also acknowledge the potential biases that may be present in the data used to train our model, and the need for ongoing evaluation and improvement to address these concerns. To ensure transparency and accountability, we have included a model card that describes the intended use cases, limitations, and potential biases of our model. We encourage users to refer to this model card and exercise caution when applying our technology in new contexts. We hope that our work will inspire further research and discussion on the ethical implications of AI and the importance of transparency and accountability in the development of new technologies.</a>.
+        </b>
+      </h1>                 
+    </div>     
+  </div> -->
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@article{li2023gligen,
+  author      = {Li, Yuheng and Liu, Haotian and Wen, Yangming and Lee, Yong Jae},
+  title       = {Generate Anything Anywhere in Any Scene},
+  publisher   = {arXiv:PLACEHOLDER},
+  year        = {2023},
+}
+</code></pre>
+  </div>
+</section>
+
+<section class="section" id="Acknowledgement">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p>
+      This website is adapted from <a
+      href="https://gligen.github.io/">GLIGEN</a> , licensed under a <a rel="license"
+                                          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+      Commons Attribution-ShareAlike 4.0 International License</a>.
+    </p>
+    <p>
+
+    <!-- <a href='https://github.com/Computer-Vision-in-the-Wild/'><img id="painting_icon" width="10%" src="https://avatars.githubusercontent.com/u/97258247?s=200&v=4"> 
+    </a> 
+    <b> Related Links</b> : 
+    <div class="content has-text-justified">
+      <ul>
+        <li><a href='https://github.com/Computer-Vision-in-the-Wild/'>[Computer Vision in the Wild] </a> </li>
+        <li>GLIGEN: (box, concept) &#8594 image || GLIP : image &#8594 (box, concept); See grounded image understanding in <a href='https://github.com/microsoft/GLIP'>[GLIP]</a></li>
+        <li>Modulated design and training of foundation models for image understanding <a href='https://react-vl.github.io/'>[REACT]</a></li>
+      </ul>
+ 
+    </div>      -->
+
+    
+    </p>
+  </div>
+</section>
+
+
+</body>
+</html>
